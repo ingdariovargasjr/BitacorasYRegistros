@@ -22,18 +22,25 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav">
                     <li class="nav-item" role="presentation"><a class="nav-link"
-                            href="registros.php?user=<?php echo $user = $_GET['user']; ?>">registros</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link"
-                            href="bitacoras.php?user=<?php echo $user = $_GET['user']; ?>">bitacoras</a>
+                            href="registros_multimodal.php?user=<?php echo $user = $_GET['user']; ?>">MULTIMODAL</a>
                     </li>
                     <li class="nav-item" role="presentation"><a class="nav-link"
+                            href="registros_mla.php?user=<?php echo $user = $_GET['user']; ?>">MLA</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link"
+                            href="registros_scia.php?user=<?php echo $user = $_GET['user']; ?>">SCIA</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link"
+                            href="registros_sodasa.php?user=<?php echo $user = $_GET['user']; ?>">SODASA</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link"
+                            href="bitacoras.php?user=<?php echo $user = $_GET['user']; ?>">bitácoras</a>
+                    </li>
+                    <li class="nav-item active" role="presentation"><a class="nav-link"
                             href="acerca_de.php?user=<?php echo $user = $_GET['user']; ?>">acerca
                             de</a></li>
                 </ul>
                 <ul class="nav navbar-nav ml-auto">
 
                     <li class="nav-item" role="presentation"><a class="nav-link" href="index.php">cerrar
-                            sesion</a></li>
+                            sesión</a></li>
                 </ul>
             </div>
         </div>
@@ -43,8 +50,8 @@
             <div class="container">
                 <div class="block-heading" style="height: 439px;">
                     <h1 class="text-info"><strong>Acerca del sistema</strong></h1>
-                    <p>SISTEMA DE BITACORAS Y REGISTROS.<br>Elaborado por: Ing. Darío Maldonado Vargas<br>Version:
-                        1.0<br>Soporte: Ext 232</p>
+                    <p>SISTEMA DE BITÁCORAS Y REGISTROS.<br>Elaborado por: Depto. de Sistemas<br>Versión:
+                        1.1<br>Soporte: Ext 232</p>
 
                 </div>
             </div>

@@ -26,8 +26,15 @@
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav">
                     <li class="nav-item" role="presentation"><a class="nav-link"
-                            href="registros.php?user=<?php echo $user = $_GET['user']; ?>">registros</a></li>
+                            href="registros_multimodal.php?user=<?php echo $user = $_GET['user']; ?>">MULTIMODAL</a>
+                    </li>
                     <li class="nav-item" role="presentation"><a class="nav-link"
+                            href="registros_mla.php?user=<?php echo $user = $_GET['user']; ?>">MLA</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link"
+                            href="registros_scia.php?user=<?php echo $user = $_GET['user']; ?>">SCIA</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link"
+                            href="registros_sodasa.php?user=<?php echo $user = $_GET['user']; ?>">SODASA</a></li>
+                    <li class="nav-item active" role="presentation"><a class="nav-link"
                             href="bitacoras.php?user=<?php echo $user = $_GET['user']; ?>">bitacoras</a>
                     </li>
                     <li class="nav-item" role="presentation"><a class="nav-link"

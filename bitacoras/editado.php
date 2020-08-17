@@ -81,7 +81,7 @@ while ($row = sqlsrv_fetch_Array($stsm, SQLSRV_FETCH_ASSOC)) {
                     <h1 class="text-info"><strong>EDITAR REGISTRO</strong></h1>
                     <p>Edite los datos deseados.</p>
                 </div>
-                <form method="post" action="user_edit.php">
+                <form method="post" action="user_edit.php?user=<?php echo $user = $_GET['user']; ?>">
                     <div class="form-group"><label for="correo_electronico">Email</label><input
                             class="form-control item" type="text" name="correo_electronico" id="correo_electronico"
                             value="<?php echo $correo ?>">
@@ -147,34 +147,36 @@ while ($row = sqlsrv_fetch_Array($stsm, SQLSRV_FETCH_ASSOC)) {
 
                     <div class="form-group-hidden"><label for="userBit"></label><input class="form-control-hidden"
                             type="hidden" name="userBit" id="userBit" value="<?php echo $edit = $_GET['edit']; ?>">
+                        <div class="form-group-hidden"><label for="user"></label><input class="form-control-hidden"
+                                type="hidden" name="user" id="user" value="<?php echo $user = $_GET['user']; ?>">
+                        </div>
+                        <input class="btn btn-outline-success btn-block" name="edicion" id="edicion" type="submit"
+                            style="font-family: Montserrat, sans-serif;" value="Actualizar registro">
+                        <a class="btn btn-outline-danger btn-block"
+                            href="registros.php?user=<?php echo $user = $_GET['user']; ?>">Cancelar</a>
                     </div>
-                    <input class="btn btn-outline-success btn-block" name="edicion" id="edicion" type="submit"
-                        style="font-family: Montserrat, sans-serif;" value="Actualizar registro">
-                    <a class="btn btn-outline-danger btn-block"
-                        href="registros.php?user=<?php echo $user ?>">Cancelar</a>
-            </div>
 
 
-            </form>
-            <?php } ?>
+                </form>
+                <?php } ?>
 
-            <?php
-
-
-            if (isset($_POST['creacion'])) {
+                <?php
 
 
-                $time = date_default_timezone_set('America/Monterrey');
-                $date = date('d/m/Y H:i:s', time());
+                if (isset($_POST['creacion'])) {
 
-                $user = $_POST['usuario'];
-                $email = $_POST['correo_electronico'];
-                $pass = $_POST['contraseña'];
-                $area = $_POST['area'];
-                $accion = 'CREACION';
-                echo $accion;
 
-                $sql = "INSERT INTO usuario (correo_electronico, username, password, area) 
+                    $time = date_default_timezone_set('America/Monterrey');
+                    $date = date('d/m/Y H:i:s', time());
+
+                    $user = $_POST['usuario'];
+                    $email = $_POST['correo_electronico'];
+                    $pass = $_POST['contraseña'];
+                    $area = $_POST['area'];
+                    $accion = 'CREACION';
+                    echo $accion;
+
+                    $sql = "INSERT INTO usuario (correo_electronico, username, password, area) 
     VALUES ('" . $correo . "','" . $usuario . "', '" . $contraseña . "', '" . $area . "');" . "CREATE TRIGGER  'after_insert_usuario' ON bitacoras
 BEFORE INSERT ON usuario
 FOR EACH ROW
@@ -182,11 +184,11 @@ BEGIN
 INSERT INTO usuarios_bit (correo_electronico, username, password, area, fecha, accion, pers_modifico) 
         VALUES ('" . $correo . "','" . $usuario . "', '" . $contraseña . "', '" . $area . "','" . $date . "','CREACION', '" . $usuario . "');
 END";
-            } else {
-                //do nothing
-            }
+                } else {
+                    //do nothing
+                }
 
-            ?>
+                ?>
             </div>
 
 
