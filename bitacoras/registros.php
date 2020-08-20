@@ -12,30 +12,26 @@
 </head>
 
 <body>
-
-
-
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar"
-        style="background-color: rgb(33,55,171);color: #ffffff;font-size: 15px;">
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar" style="background-color: rgb(33,55,171);color: #ffffff;font-size: 15px;">
         <div class="container"><a class="navbar-brand logo" href="inicio.php?user=<?php echo $user = $_GET['user']; ?>">
-                <img src="assets/img/logM.png" style="width: 110px; height: 80px;" alt="image"></a><button
-                data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle
+                <img src="assets/img/logM.png" style="width: 110px; height: 80px;" alt="image"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle
                     navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item" role="presentation"><a class="nav-link"
-                            href="registros.php?user=<?php echo $user = $_GET['user']; ?>">registros</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link"
-                            href="bitacoras.php?user=<?php echo $user = $_GET['user']; ?>">bitacoras</a>
+                    <li class="nav-item active" role="presentation"><a class="nav-link" href="registros_multimodal.php?user=<?php echo $user = $_GET['user']; ?>">MULTIMODAL</a>
                     </li>
-                    <li class="nav-item" role="presentation"><a class="nav-link"
-                            href="acerca_de.php?user=<?php echo $user = $_GET['user']; ?>">acerca
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="registros_mla.php?user=<?php echo $user = $_GET['user']; ?>">MLA</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="registros_scia.php?user=<?php echo $user = $_GET['user']; ?>">CSIA</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="registros_sodasa.php?user=<?php echo $user = $_GET['user']; ?>">SODASA</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="bitacoras.php?user=<?php echo $user = $_GET['user']; ?>">bitacoras</a>
+                    </li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="acerca_de.php?user=<?php echo $user = $_GET['user']; ?>">acerca
                             de</a></li>
                 </ul>
                 <ul class="nav navbar-nav ml-auto">
 
                     <li class="nav-item" role="presentation"><a class="nav-link" href="index.php">cerrar
-                            sesion</a></li>
+                            sesión</a></li>
                 </ul>
             </div>
         </div>
@@ -43,21 +39,13 @@
     <main class="page registration-page">
         <section class="container ui">
             <?php include "conexion.php";
-
+            $user = $_GET['user'];
             $sql = "SELECT * FROM usuario";
             $stmt = sqlsrv_query($conn, $sql);
 
             if ($stmt === false) {
 
                 die(print_r(sqlsrv_errors(), true));
-
-                // if ($errors = sqlsrv_errors() != null) {
-                //     foreach ($errors as $error) {
-                //         echo "SQLSTATE: " . $error['code'] . "<br/>";
-                //         echo "code: " . $error['code'] . "<br/>";
-                //         echo "message: " . $error['message'] . "<br/>";
-                //     }
-                // }
             }
 
             echo "
@@ -72,6 +60,7 @@
                             <th> <font face='Montserrat'><strong>CORREO ELECTRONICO</strong></font> </th> 
                             <th> <font face='Montserrat'><strong>CONTRASEÑA</strong></font> </th> 
                             <th> <font face='Montserrat'><strong>AREA</strong></font> </th> 
+                            <th> <font face='Montserrat'><strong>VINCULADO A</strong></font> </th> 
                             <th> <font face='Montserrat'><strong></strong></font> </th> 
           
           
@@ -80,31 +69,28 @@
 
             $stsm = sqlsrv_query($conn, $sql);
             while ($row = sqlsrv_fetch_Array($stsm, SQLSRV_FETCH_ASSOC)) {
-
+                echo $user = $_GET['user'];
                 echo "<tr>";
                 echo "<td>" . $id = $row["id"];
                 echo "<td>" . $user = $row["username"];
                 echo "<td>" . $correo = $row["correo_electronico"];
                 echo "<td>" . $password = $row["password"];
                 echo "<td>" . $area = $row["area"];
-
+                echo "<td>" . $vinculado = $row["vinculado"];
 
                 echo '<td>';
 
             ?>
 
-            <a class="btn btn-outline-primary" name="editado" id="editado"
-                href="editado.php?edit=<?php echo $row['id']; ?>"><i class="fa fa-pencil fa-fw"
-                    aria-hidden="true"></i>Editar</a>
-            <a name"borrado" id"borrado" class="btn btn-outline-danger"
-                href="user_delete.php?borrar=<?php echo $row['id']; ?>">
-                <i class="fa fa-trash-o" aria-hidden="true"></i>Borrar</a>
+                <a class="btn btn-outline-primary" name="editado" id="editado" href="editado.php?edit=<?php echo $row['id']; ?>&user=<?php echo $user = $_GET['user']; ?>"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i>Editar</a>
+                <a name"borrado" id"borrado" class="btn btn-outline-danger" href="user_delete.php?borrar=<?php echo $row['id']; ?>&user=<?php echo $user = $_GET['user']; ?>">
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>Borrar</a>
 
 
 
 
-            </td>
-            </tr>
+                </td>
+                </tr>
 
             <?php } ?>
             </table>
@@ -115,8 +101,7 @@
 
 
             <div class="buttons" align="center">
-                <a class="btn btn-outline-success"
-                    href="nuevo_registro.php?user=<?php echo $user = $_GET['user']; ?>">Nuevo
+                <a class="btn btn-outline-success" href="nuevo_registro.php?user=<?php echo $user = $_GET['user']; ?>">Nuevo
                     Registro</a>
 
             </div>

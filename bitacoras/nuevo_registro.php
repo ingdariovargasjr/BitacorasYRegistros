@@ -16,27 +16,26 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar"
-        style="background-color: rgb(33,55,171);color: #ffffff;font-size: 15px;">
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar" style="background-color: rgb(33,55,171);color: #ffffff;font-size: 15px;">
         <div class="container"><a class="navbar-brand logo" href="inicio.php?user=<?php echo $user = $_GET['user']; ?>">
-                <img src="assets/img/logM.png" style="width: 110px; height: 80px;" alt="image"></a><button
-                data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle
+                <img src="assets/img/logM.png" style="width: 110px; height: 80px;" alt="image"></a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle
                     navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="nav navbar-nav">
-                    <li class="nav-item" role="presentation"><a class="nav-link"
-                            href="registros.php?user=<?php echo $user = $_GET['user']; ?>">registros</a></li>
-                    <li class="nav-item" role="presentation"><a class="nav-link"
-                            href="bitacoras.php?user=<?php echo $user = $_GET['user']; ?>">bitacoras</a>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="registros_multimodal.php?user=<?php echo $user = $_GET['user']; ?>">MULTIMODAL</a>
                     </li>
-                    <li class="nav-item" role="presentation"><a class="nav-link"
-                            href="acerca_de.php?user=<?php echo $user = $_GET['user']; ?>">acerca
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="registros_mla.php?user=<?php echo $user = $_GET['user']; ?>">MLA</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="registros_scia.php?user=<?php echo $user = $_GET['user']; ?>">CSIA</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="registros_sodasa.php?user=<?php echo $user = $_GET['user']; ?>">SODASA</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="bitacoras.php?user=<?php echo $user = $_GET['user']; ?>">bitacoras</a>
+                    </li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="acerca_de.php?user=<?php echo $user = $_GET['user']; ?>">acerca
                             de</a></li>
                 </ul>
                 <ul class="nav navbar-nav ml-auto">
 
                     <li class="nav-item" role="presentation"><a class="nav-link" href="index.php">cerrar
-                            sesion</a></li>
+                            sesión</a></li>
                 </ul>
             </div>
         </div>
@@ -50,17 +49,13 @@
                     <p>Ingrese los datos solicitados.</p>
                 </div>
                 <form method="post" action="get_response_registros.php">
-                    <div class="form-group"><label for="correo_electronico">Email</label><input
-                            class="form-control item" type="text" name="correo_electronico" id="correo_electronico">
+                    <div class="form-group"><label for="correo_electronico"><strong>Email</strong></label><input class="form-control item" type="text" name="correo_electronico" id="correo_electronico">
                     </div>
-                    <div class="form-group"><label for="usuario">Usuario</label><input class="form-control item"
-                            type="text" name="usuario" id="usuario"></div>
-                    <div class="form-group"><label for="contraseña">Contraseña</label><input class="form-control item"
-                            type="password" name="contraseña" id="contraseña"></div>
+                    <div class="form-group"><label for="usuario"><strong>Usuario</strong></label><input class="form-control item" type="text" name="usuario" id="usuario"></div>
+                    <div class="form-group"><label for="contraseña"><strong>Contraseña</strong></label><input class="form-control item" type="password" name="contraseña" id="contraseña"></div>
                     <div class="form-group">
-                        <label for="area">Area</label>
-                        <input list="encodings" name="area" id="area"
-                            class="form-control item col-sm-12 custom-select custom-select-sm">
+                        <label for="area"><strong>Area</strong></label>
+                        <input list="encodings" name="area" id="area" class="form-control item col-sm-12 custom-select custom-select-sm">
                         <datalist id="encodings">
                             <option value="Dirección">Dirección</option>
                             <option value="Recursos Humanos">Recursos Humanos</option>
@@ -109,15 +104,19 @@
                             <option value="Monitoreo">Monitoreo</option>
                         </datalist>
                     </div>
-
-
-                    <div class="form-group-hidden"><label for="userBit"></label><input class="form-control-hidden"
-                            type="hidden" name="userBit" id="userBit" value="<?php echo $user = $_GET['user']; ?>">
+                    <label for="radiobutons-container"><strong>Vinculado a:</strong></label>
+                    <div class="radiobutons-container">
+                        <label class="radio-inline"><input type="radio" name="optradio" value="Telefono">Telefono</label>
+                        <br>
+                        <label class="radio-inline"><input type="radio" name="optradio" value="Laptop">Laptop</label>
+                        <br>
+                        <label class="radio-inline"><input type="radio" name="optradio" value="Telefono y laptop">Telefono y laptop</label>
                     </div>
-                    <input class="btn btn-outline-success btn-block" name="creacion" id="creacion" type="submit"
-                        style="font-family: Montserrat, sans-serif;" value="Registrar">
-                    <a class="btn btn-outline-danger btn-block"
-                        href="registros.php?user=<?php echo $user = $_GET['user']; ?>">Cancelar</a>
+
+                    <div class="form-group-hidden"><label for="userBit"></label><input class="form-control-hidden" type="hidden" name="userBit" id="userBit" value="<?php echo $user = $_GET['user']; ?>">
+                    </div>
+                    <input class="btn btn-outline-success btn-block" name="creacion" id="creacion" type="submit" style="font-family: Montserrat, sans-serif;" value="Registrar">
+                    <a class="btn btn-outline-danger btn-block" href="registros.php?user=<?php echo $user = $_GET['user']; ?>">Cancelar</a>
             </div>
 
 
@@ -140,14 +139,14 @@
                 $accion = 'CREACION';
                 echo $accion;
 
-                $sql = "INSERT INTO usuario (correo_electronico, username, password, area) 
+                /* $sql = "INSERT INTO usuario (correo_electronico, username, password, area) 
     VALUES ('" . $correo . "','" . $usuario . "', '" . $contraseña . "', '" . $area . "');" . "CREATE TRIGGER  'after_insert_usuario' ON bitacoras
 BEFORE INSERT ON usuario
 FOR EACH ROW
 BEGIN
 INSERT INTO usuarios_bit (correo_electronico, username, password, area, fecha, accion, pers_modifico) 
         VALUES ('" . $correo . "','" . $usuario . "', '" . $contraseña . "', '" . $area . "','" . $date . "','CREACION', '" . $usuario . "');
-END";
+END";*/
             } else {
                 //do nothing
             }

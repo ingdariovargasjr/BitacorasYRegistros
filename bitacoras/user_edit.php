@@ -33,6 +33,8 @@ $area = $_POST['area'];
 $time = date_default_timezone_set('America/Monterrey');
 $date = date('d/m/Y h:i:s a', time());
 $userBit = $_POST['userBit'];
+$user = $_GET['user'];
+$user = $_POST['user'];
 
 
 //aqui tendria que ir el html
@@ -40,7 +42,7 @@ $userBit = $_POST['userBit'];
 echo $sql = "UPDATE usuario SET correo_electronico= '$correo ', username= '$usuario', password= '$contraseña', area='$area' WHERE id='$userBit'";
 
 $edicion = "INSERT INTO bitacoras (correo_electronico, username, password, area, fecha, accion, pers_modifico) 
-    VALUES ('" . $correo . "','" . $usuario . "', '" . $contraseña . "', '" . $area . "','" . $fecha . "','EDICION', '" . $usuarioBit . "')";
+    VALUES ('" . $correo . "','" . $usuario . "', '" . $contraseña . "', '" . $area . "','" . $fecha . "','EDICIÓN', '" . $user . "')";
 
 if ($result === sqlsrv_query($conn, $sql)) {
     die('There was an error running the query [' . $conn->error . ']');
@@ -60,13 +62,13 @@ if ($result2 === sqlsrv_query($conn, $edicion)) {
 } else {
     echo "<script>
             alert('Datos editados correctamente.');
-            window.location.href = 'registros.php?user=$userBit';
+            window.location.href = 'registros.php?user=$user';
         </script>";
 }
 echo "<script>
             alert('Llene todos los campos.');
-            window.location.href='registros.php?user=$userBit';
+            window.location.href='registros.php?user=$user';
         </script>";
 
 
-header("location: registros.php?user=$userBit");
+header("location: registros.php?user=$user");

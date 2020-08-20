@@ -10669,6 +10669,21 @@ a.text-dark:hover {
   font-family: sans-serif;
 }
 
+.table-hover tbody tr:hover td,
+.table-hover tbody tr:hover th {
+  background-color: #48d59883;
+}
+
+.table tbody tr:hover td,
+.table tbody tr:hover th {
+  background-color: #48d59883;
+}
+
+.table-hover tbody tr:hover td {
+  background: #48d59883;
+}
+
+
 #baguetteBox-overlay .full-image:before {
   content: "";
   display: inline-block;
