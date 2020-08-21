@@ -27,25 +27,28 @@ $correo = $_POST['correo_electronico'];
 $usuario = $_POST['usuario'];
 $contraseña = $_POST['contraseña'];
 $area = $_POST['area'];
+$vinculado = $POST['vinculado'];
 $time = date_default_timezone_set('America/Monterrey');
 $date = date('d/m/Y h:i:s a', time());
 $userBit = $_POST['userBit'];
+$user = $_GET['user'];
+
 
 ///////////////////////////////////////////////////////////
 //se necesita un trigger aqui en ejecucion
 
 $sql = "INSERT INTO usuario (correo_electronico, username, password, area) 
-VALUES ('" . $correo . "','" . $usuario . "', '" . $contraseña . "', '" . $area . "')";
+VALUES ('" . $correo . "','" . $usuario . "', '" . $contraseña . "', '" . $area . "', '" . $vinculado . "')";
 
 $sql2 = "INSERT INTO bitacoras (correo_electronico, username, password, area, fecha, accion, pers_modifico) 
-       VALUES ('" . $correo . "','" . $usuario . "', '" . $contraseña . "', '" . $area . "','" . $date . "','CREACION', '" . $userBit . "')";
+       VALUES ('" . $correo . "','" . $usuario . "', '" . $contraseña . "', '" . $area . "','" . $date . "','CREACIÓN', '" . $userBit . "')";
 
 if ($result === sqlsrv_query($conn, $sql)) {
     die('There was an error running the query [' . $conn->error . ']');
 } else {
     echo "<script>
             alert('Datos cargados al sistema.');
-            window.location.href='registros.php?user=$userBit';
+            window.location.href='registros.php?user=$user';
 </script>";
 }
 
@@ -54,7 +57,7 @@ if ($result2 === sqlsrv_query($conn, $sql2)) {
 } else {
     echo "<script>
 alert('Datos cargados al sistema.');
-window.location.href = 'registros.php?user=$userBit';
+window.location.href = 'registros.php?user=$user';
 </script>";
 }
 

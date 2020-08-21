@@ -29,7 +29,7 @@
                 <ul class="nav navbar-nav ml-auto">
 
                     <li class="nav-item" role="presentation"><a class="nav-link" href="index.php">cerrar
-                            sesion</a></li>
+                            sesión</a></li>
                 </ul>
             </div>
         </div>
