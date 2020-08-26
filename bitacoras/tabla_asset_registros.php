@@ -16,9 +16,10 @@
 
     <?php include "conexion.php";
     $edit = $_GET['edit'];
+    $user = $_GET['user'];
     $sql = "SELECT * FROM usuario";
     $stmt = sqlsrv_query($conn, $sql);
-    $user = $_GET['user'];
+
     if ($stmt === false) {
 
         die(print_r(sqlsrv_errors(), true));
@@ -72,10 +73,10 @@
     ?>
 
     <a class="btn btn-outline-primary" name="editado" id="editado"
-        href="editado.php?edit=<?php echo $edit ?>?user=<?php $user ?>"><i class="fa fa-pencil fa-fw"
+        href="editado.php?edit=<?php echo $edit ?>&user=<?php $user ?>"><i class="fa fa-pencil fa-fw"
             aria-hidden="true"></i>Editar</a>
-    <a name"borrado" id"borrado" class="btn btn-outline-danger"
-        href="user_delete.php?borrar=<?php echo $id ?>?user=<?php $user ?>">
+    <a name="borrado" id="borrado" class="btn btn-outline-danger"
+        href="user_delete.php?borrar=<?php echo $id ?>&user=<?php $user ?>">
         <i class="fa fa-trash-o" aria-hidden="true"></i>Borrar</a>
 
     <div id="edit-modal" class="modal" tabindex="-1" role="form">

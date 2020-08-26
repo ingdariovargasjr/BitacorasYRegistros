@@ -28,13 +28,14 @@ $sql_1 = "SELECT * FROM usuario WHERE id=$borrar";
 $stmt = sqlsrv_query($conn, $sql);
 $user = $_GET['user'];
 $fecha = $date;
-$userBit = $_POST['userBit'];
+$user = $_GET['user'];
+$user = $_POST['user'];
 //aqui tendria que ir el html
 
-echo $sql = "DELETE FROM usuario WHERE id='$borrar'";
+$sql = "DELETE FROM usuario WHERE id='$borrar'";
 
 $eliminacion = "INSERT INTO bitacoras (correo_electronico, username, password, area, fecha, accion, pers_modifico) 
-    VALUES ('" . $correo . "','" . $usuario . "', '" . $contraseña . "', '" . $area . "','" . $fecha . "','ELIMINACIÓN', '" . $usuarioBit . "')";
+    VALUES ('" . $correo . "','" . $usuario . "', '" . $contraseña . "', '" . $area . "','" . $fecha . "','ELIMINACIÓN', '" . $user . "')";
 
 if ($result === sqlsrv_query($conn, $sql)) {
     die('There was an error running the query [' . $conn->error . ']');
@@ -49,18 +50,18 @@ echo "<script>
             window.location.href='registros.php';
         </script>";
 
-if ($result2 === sqlsrv_query($conn, $sql)) {
+if ($result2 === sqlsrv_query($conn, $eliminacion)) {
     die('There was an error running the query [' . $conn->error . ']');
 } else {
     echo "<script>
             alert('Datos editados correctamente.');
-            window.location.href = 'registros.php?user=$userBit';
+            window.location.href = 'registros.php?user=$user';
         </script>";
 }
 echo "<script>
             alert('Llene todos los campos.');
-            window.location.href='registros.php?user=$userBit';
+            window.location.href='registros.php?user=$user';
         </script>";
 
 
-header("location: registros.php?user=$userBit");
+header("location: registros.php?user=$user");

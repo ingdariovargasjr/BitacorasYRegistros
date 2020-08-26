@@ -10,8 +10,8 @@ $password = $_POST['contraseña'];
 
 include "usuarios_login.php";
 
-$sql1 = "SELECT username, password FROM usuario WHERE username = '$username' and password = '$password'";
-$sql2 = "SELECT username FROM usuario";
+$sql1 = "SELECT username, password FROM usuario_interno WHERE username = '$username' and password = '$password'";
+$sql2 = "SELECT username FROM usuario_interno";
 
 $stmt1 = sqlsrv_query($conn, $sql1);
 $row = sqlsrv_fetch_array($stmt1);

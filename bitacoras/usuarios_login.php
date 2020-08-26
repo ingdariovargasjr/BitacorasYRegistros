@@ -1,6 +1,6 @@
 <?php
 include "conexion.php";
-$sql = "SELECT * FROM usuario ORDER BY id desc";
+$sql = "SELECT * FROM usuario_interno ORDER BY id desc";
 $stmt = sqlsrv_query($conn, $sql, array());
 
 if (!$stmt) {
